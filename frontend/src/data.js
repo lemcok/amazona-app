@@ -18,7 +18,7 @@
             image: '/images/p2.jpg',
             price: 120,
             brand: 'Adidas',
-            rating: 4.5,
+            rating: 4,
             numReviews: 10,
             description: 'high quality product',
         },
