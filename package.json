@@ -1,0 +1,27 @@
+{
+  "name": "amazona-app",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "api for products",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemcok/amazona-app.git"
+  },
+  "keywords": [],
+  "author": "Ricardo Flores",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lemcok/amazona-app/issues"
+  },
+  "homepage": "https://github.com/lemcok/amazona-app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
