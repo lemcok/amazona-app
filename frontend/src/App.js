@@ -5,9 +5,6 @@ import { ProductScreen } from './screens/ProductScreen';
 
 
 
-
-
-
 function App() {
   return (
     <Router>
