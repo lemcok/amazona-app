@@ -1,9 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { CardScreen } from './screens/CardScreen';
 import { HomeScreen } from './screens/HomeScreen';
 import { ProductScreen } from './screens/ProductScreen';
-
-
 
 function App() {
   return (
@@ -21,9 +20,9 @@ function App() {
             </header>
 
             <main>
+                <Route exact path="/card/:id?" component={ CardScreen } />
                 <Route exact path="/product/:id" component={ ProductScreen } />
                 <Route exact path="/" component={ HomeScreen } />
-                
             </main>
 
             <footer className="row center">All right reserved</footer>
