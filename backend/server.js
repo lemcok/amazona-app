@@ -1,10 +1,15 @@
 import express from 'express';
 import mongoose from 'mongoose'
-import { data } from './data.js';
+import dotenv from 'dotenv'
 import productRouter from './routers/productRouter.js';
 import userRouter from './routers/userRouter.js';
 
+dotenv.config();
+
 const app = express();
+app.use( express.json() );
+app.use( express.urlencoded({ extended: true }) );
+
 ( async() => {
     const db = await mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/amazona', {
         useNewUrlParser:true,
