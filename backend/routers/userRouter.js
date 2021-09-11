@@ -20,7 +20,32 @@ userRouter.post('/signin', async( req, res ) => {
             return;
         }
     }
-    res.status(401).send({ message: 'Invalid email or password' });
+})
+
+userRouter.post('/register', async(req, res) => {
+    const user = await User({
+        name: req.body.name,
+        email: req.body.email,
+        password: bcrypt.hashSync(req.body.password, 8),
+    })
+
+    try {
+        const createdUser = await user.save();
+        res.send({
+            _id: createdUser._id,
+            name: createdUser.name,
+            email: createdUser.email,
+            isAdmin: createdUser.isAdmin,
+            token: generateToken(createdUser)
+        })
+    } catch (error) {
+            const { keyPattern } = error;
+            if(keyPattern?.email >= 1){
+                res.status(401).send({ message: 'Email already exist' });
+            }else {
+                res.status(401).send( error );
+            }
+    }
 })
 
 userRouter.get( '/seed', async( req, res ) => {

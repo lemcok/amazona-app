@@ -1,22 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { startLoginEmailPassword } from '../actions/userActions';
+import { startRegister } from '../actions/userActions';
 import { LoadingBox } from '../components/LoadingBox';
 import { MessageBox } from '../components/MessageBox';
 
-export const SigninScreeen = ({ location, history }) => {
+export const RegisterScreeen = ({ location, history }) => {
     const dispatch = useDispatch();
 
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
     const redirect = location.search ? location.search.split('=')[1] : '/' ;
-    const { userInfo, loading, error } = useSelector(state => state.userAuth)
+
+    const { userInfo, loading, error } = useSelector(state => state.userRegister)
 
     const handleSubmitForm = (e) => {
-        e.preventDefault();
-        dispatch( startLoginEmailPassword( email, password ) );
+        e.preventDefault()
+        if (password !== confirmPassword) {
+            alert('Password and confirm password are not match')
+        }else {
+            dispatch( startRegister( name, email, password ) )
+        }
     }
 
     useEffect(() => {
@@ -29,10 +36,21 @@ export const SigninScreeen = ({ location, history }) => {
         <div>
             <form onSubmit={ handleSubmitForm } className="form">
                 <div>
-                    <h1>Login</h1>
+                    <h1>Create Account</h1>
                 </div>
                 { loading && <LoadingBox/> }
                 { error && <MessageBox variant='danger'>{ error }</MessageBox> }
+                <div>
+                    <label htmlFor="name">Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter name"
+                        required
+                        autoComplete="off"
+                        onChange={ (e) => setName(e.target.value) }
+                    />
+                </div>
                 <div>
                     <label htmlFor="email">Email Address</label>
                     <input
@@ -40,7 +58,18 @@ export const SigninScreeen = ({ location, history }) => {
                         id="email"
                         placeholder="Enter email"
                         required
+                        autoComplete="off"
                         onChange={ (e) => setEmail(e.target.value) }
+                    />
+                </div>
+                <div>
+                    <label htmlFor="confirmPassword">Confirm Password</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Enter confirm password"
+                        required
+                        onChange={ (e) => setConfirmPassword(e.target.value) }
                     />
                 </div>
                 <div>
@@ -56,17 +85,16 @@ export const SigninScreeen = ({ location, history }) => {
 
                 <div>
                     <label/>
-                    <button className="primary" type="submit" >Login</button>
+                    <button className="primary" type="submit" >Register</button>
                 </div>
 
                 <div>
                     <label/>
                     <div>
-                        New customer? <Link to={`/register?redirect=${ redirect }`}>Create your account</Link>
+                        Already have an account? <Link to={`/signin?redirect=${ redirect }`}>Sign-In</Link>
                     </div>
                 </div>
             </form>
         </div>
-    );
+    )
 }
-

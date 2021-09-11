@@ -5,6 +5,8 @@ import { startLogout } from './actions/userActions';
 import { CartScreen } from './screens/CartScreen';
 import { HomeScreen } from './screens/HomeScreen';
 import { ProductScreen } from './screens/ProductScreen';
+import { RegisterScreeen } from './screens/RegisterScreeen';
+import { ShippingAddressScreen } from './screens/ShippingAddressScreen';
 import { SigninScreeen } from './screens/SigninScreeen';
 
 function App() {
@@ -57,6 +59,8 @@ function App() {
                   <Route exact path="/card/:id?" component={CartScreen} />
                   <Route exact path="/product/:id" component={ProductScreen} />
                   <Route exact path="/signin" component={SigninScreeen} />
+                  <Route exact path="/register" component={RegisterScreeen} />
+                  <Route exact path="/shipping" component={ ShippingAddressScreen } />
                   <Route exact path="/" component={HomeScreen} />
               </main>
 
