@@ -94,6 +94,15 @@ button.primary {
 button.block {
   width: 100%;
 }
+.mr-05 {
+  margin-right: 1rem;
+}
+.pointer {
+  cursor: pointer;
+}
+.p-tb-05 {
+  padding: .5rem 0 .5rem 0;
+}
 
 /* Header */
 header a {
@@ -206,7 +215,7 @@ img.large {
   background-color: #ffe0e0e0;
 }
 
-/* SIGNIN */
+/* FORM */
 .form {
   max-width: 60rem;
   margin: 0 auto;
@@ -218,7 +227,6 @@ img.large {
 }
 .form label {
   margin: 1rem 0;
-  display: block;
 }
 
 /* Dropdown */

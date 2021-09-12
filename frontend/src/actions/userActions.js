@@ -70,6 +70,7 @@ export const startLogout = () => {
     return ( dispatch ) => {
         localStorage.removeItem('userInfo');
         localStorage.removeItem('cartItems');
+        localStorage.removeItem('shippingAddress');
 
         dispatch({
             type: USER_SIGNOUT
