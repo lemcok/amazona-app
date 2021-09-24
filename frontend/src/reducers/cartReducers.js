@@ -27,7 +27,6 @@ export const cartReducers = ( state = { cartItems:[] }, action ) => {
                 shippingAddress: action.payload
             }
         case CART_SAVE_PAYMENT_METHOD:
-            console.log(action.payload)
             return {
                 ...state,
                 paymentMethod: action.payload
