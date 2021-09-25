@@ -1,9 +1,8 @@
-import userRouter from "./routers/userRouter.js"
 import jwt, { decode } from 'jsonwebtoken'
 
 export const generateToken = ( user ) => {
     return jwt.sign({
-        _id: userRouter._id,
+        _id: user._id,
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,

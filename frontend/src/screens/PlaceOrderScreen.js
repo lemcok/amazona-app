@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { orderReset, startCreateOrder } from '../actions/orderActions'
 import { CheckoutSteps } from '../components/CheckoutSteps'
-
+import { LoadingBox } from '../components/LoadingBox'
+import { MessageBox } from '../components/MessageBox'
 
 export const PlaceOrderScreen = ({ history }) => {
-    
     const dispatch = useDispatch();
+
+    const { loading, success, error, order } = useSelector(state => state.orderCreate);
+
     const cart = useSelector(state => state.cart)
     if (!cart.paymentMethod) {
         history.push('payment');
@@ -21,9 +25,15 @@ export const PlaceOrderScreen = ({ history }) => {
     cart.totalPrice =  cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
 
     const handlePlaceOrder = () => {
-        dispatch(  )
+        dispatch( startCreateOrder( { ...cart, orderItems: cart.cartItems } ) )
     }
-    
+
+    useEffect(() => {
+        if( success ){
+            history.push(`/order/${ order._id }`);
+            dispatch( orderReset() )
+        }
+    }, [success, dispatch, history, order])
 
     return (
         <div>
@@ -119,6 +129,8 @@ export const PlaceOrderScreen = ({ history }) => {
                                     Place Order
                                 </button>
                             </li>
+                            { loading && <LoadingBox /> }
+                            { error && <MessageBox variant='danger'>{ error }</MessageBox> }
                         </ul>
                     </div>
                 </div>
