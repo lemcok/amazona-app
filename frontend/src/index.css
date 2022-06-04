@@ -160,6 +160,7 @@ img.medium {
 }
 img.large {
   width: 100%;
+  max-width: 700px;
 }
 
 /* Card */
@@ -261,4 +262,21 @@ img.large {
 .checkout-steps > div.active {
   border-top-color: #f08000;
   color: #f08000;
+}
+
+.icon_arrow_left:hover {
+  fill: #ff8000;
+}
+.icon_shopping_bag {
+  vertical-align: bottom;
+  /* padding: 1rem; */
+}
+.icon_shopping_bag:hover {
+  /* padding: 1rem; */
+  fill: #ff8000;
+}
+
+.back-place{
+  display: inline-block;
+  padding: 0 0 1rem 0;
 }

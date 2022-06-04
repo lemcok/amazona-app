@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 import { startLogout } from './actions/userActions';
+import { ShoppingBagIcon } from './components/icons/ShoppingBagIcon';
 import { CartScreen } from './screens/CartScreen';
 import { HomeScreen } from './screens/HomeScreen';
 import { OrderScreen } from './screens/OrderScreen';
@@ -33,6 +34,7 @@ function App() {
                   </div>
                   <div>
                       <Link to="/card">
+                          <ShoppingBagIcon />
                           Cart
                           {cartItems.length > 0 && (
                               <span className="badge">{cartItems.length}</span>
