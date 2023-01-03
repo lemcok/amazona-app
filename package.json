@@ -9,7 +9,7 @@
   ],
   "main": "index.js",
   "scripts": {
-    "build": "npm run build --workspace=frontend",
+    "build": "SKIP_PREFLIGHT_CHECK=true npm run build --workspace=frontend",
     "start": "npm run start --workspace=backend"
   },
   "repository": {
