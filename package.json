@@ -1,0 +1,26 @@
+{
+  "name": "amazona-app",
+  "version": "1.0.0",
+  "description": "",
+  "private":"true", 
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build --workspace=frontend",
+    "start": "npm run start --workspace=backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemcok/amazona-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lemcok/amazona-app/issues"
+  },
+  "homepage": "https://github.com/lemcok/amazona-app#readme"
+}
