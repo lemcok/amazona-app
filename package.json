@@ -9,8 +9,9 @@
   ],
   "main": "index.js",
   "scripts": {
-    "build": "npm run build --workspace=frontend",
-    "start": "npm run start --workspace=backend"
+    "build": "SKIP_PREFLIGHT_CHECK=true npm run build --workspace=frontend",
+    "start": "npm run start --workspace=backend",
+    "dev": "npm run dev --workspace=frontend"
   },
   "repository": {
     "type": "git",
