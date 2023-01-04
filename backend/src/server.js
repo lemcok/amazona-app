@@ -8,8 +8,11 @@ import orderRouter from './routers/orderRouter.js';
 dotenv.config();
 
 const app = express();
+app.use(express.static('../frontend/build'))
+
 app.use( express.json() );
 app.use( express.urlencoded({ extended: true }) );
+
 
 ( async() => {
     const db = await mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/amazona', {
@@ -27,9 +30,9 @@ app.get('/api/config/paypal', ( req, res ) => {
     res.send( process.env.PAYPAL_CLIENT_ID || 'sb' );
 });
 
-app.get( '/', ( req, res ) => {
-    res.send('Server is ready');
-} )
+// app.get( '/', ( req, res ) => {
+//     res.send('Server is ready');
+// } )
 
 const port = process.env.PORT || 5000;
 
