@@ -5,8 +5,8 @@
   "description": "api for products",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch backend --exec node --experimental-modules src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "dev": "nodemon --watch backend --exec node --experimental-modules src/server.js"
   },
   "repository": {
     "type": "git",
